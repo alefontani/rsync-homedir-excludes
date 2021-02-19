@@ -2,7 +2,7 @@
 #
 # A list of files to exclude when backing up *nix home directories using rsync.
 #
-# Author: Ruben Barkow-Kuder <https://github.com/rubo77/rsync-homedir-excludes>
+# Forked from: Ruben Barkow-Kuder <https://github.com/rubo77/rsync-homedir-excludes>
 # Version: 2019-11-30
 #
 # #Usage:
@@ -10,74 +10,65 @@
 #    rsync -aP --exclude-from=rsync-homedir-excludes.txt /home/$USER/ /media/$USER/linuxbackup/home/$USER/
 
 
-###############################################
-# directories, probably not worth a backup    #
-# (uncomment the files you don't need)        #
-###############################################
+# uncomment the files you don't need if commented
 
-#.android
-#.AndroidStudio*/
-#Android/Sdk
-#.gradle
-#.gvm
-#.grails/
-#.grails_history
-#.kde/share/apps/nepomuk
-#.local/share/notbit
-#.local/libvirt
-#.local/share/libvirt
-#.vagrant
-#.vagrant.d
-#.wine
-#.twister
-#/twister
-#Applications/eclipse*
-#/Downloads
-#*Popcorntime*
-#/.aMule
-#/Scribus
-#/VirtualBox*
-#/Nextcloud
-#_build
-#
+.android
+.AndroidStudio*/
+Android/Sdk
+.gradle
+.gvm
+.grails/
+.grails_history
+.kde/share/apps/nepomuk
+.local/share/notbit
+.local/libvirt
+.local/share/libvirt
+.vagrant
+.vagrant.d
+.wine
+.twister
+/twister
+Applications/eclipse*
+*Popcorntime*
+/.aMule
+/Scribus
+/VirtualBox*
+/Nextcloud
+_build
+
 ## Ruby gems
-#.rvm
-#
+.rvm
+
 ## Add Game Folders here:
-#
-#/games
-#.local/share/Steam
-#.steam
-#/Steam
-#.minecraft
-#.technic
-#.PlayOnLinux
-#.local/share/lutris/runners/wine/
-#
+/games
+.local/share/Steam
+.steam
+/Steam
+.minecraft
+.technic
+.PlayOnLinux
+.local/share/lutris/runners/wine/
+
 ## Spotify
-#.config/spotify/Users
-#
-## those folders contain only temporary Videos I want to watch
-#/Videos
-#/Movies
-#
+.config/spotify/Users
+
 ## some history files
-#.python_history
-#.bash_history
-#.zsh_history
-#.mysql_history
-#
+.python_history
+.bash_history
+.zsh_history
+.mysql_history
+
 ## Python eggs
-#.local/lib/python*
-#
+.local/lib/python*
+
 ## Python virtual environments
-#PycharmProjects/**/venv
-#
+PycharmProjects/**/venv
+
 ## Maven local repository
-#/.m2
-#
+/.m2
+
 ## Unlocked Plasma Vaults
-#/Vaults
+/Vaults
 
 ################################################
 # These directories may definitely be excluded #
@@ -398,3 +389,48 @@ go/pkg/mod/cache
 .ICAClient/.tmp
 .ICAClient/cache/zlcache
 
+.anydesk
+.compiz
+.docker
+.dropbox
+.dropbox-dist
+.eclipse
+.gconf
+.gimp-2.8
+.gnome
+.gnome2
+.gnome2_private
+.gnupg
+.java
+.joplin
+.kde
+.local
+.mozilla
+.nano
+.pki
+.platformio
+.pwsafe
+.ssh
+.stm32cubeide
+.stm32cubemx
+.STM32CubeProgrammer
+.stmcube
+.stmcufinder
+.swt
+.texmf-var
+.themes
+.thunderbird
+.vscode
+.webclipse
+.xournal
+.zoom
+.apport-ignore.xml
+.bash_logout
+.ctsystem
+.dmrc
+.gitconfig
+.histfile
+.profile
+.python-history
+.sudo_as_admin_successful
+.xsession-errors.old

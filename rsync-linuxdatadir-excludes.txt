@@ -1,0 +1,32 @@
+# rsync-linuxdatadir-excludes
+#
+# A list of files to exclude when backing up *nix home directories using rsync.
+#
+# Forked from: Ruben Barkow-Kuder <https://github.com/rubo77/rsync-homedir-excludes>
+# Version: 2019-11-30
+#
+# #Usage:
+#    USER=<homedir username here>
+#    rsync -aP --exclude-from=rsync-homedir-excludes.txt /home/$USER/ /media/$USER/linuxbackup/home/$USER/
+
+# uncomment the files you don't need if commented
+
+build-*
+*.o
+.aMule
+.Trash-1000
+
+kernel
+u-boot
+STM32Cube*
+VmQemu
+VirtualBoxVMs
+VmWareVMs
+sdk
+Argentina\ 2018
+Incoming
+lost+found
+PlatformIO
+WhatsApp
+dowloads
+gitignore

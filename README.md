@@ -3,32 +3,42 @@ This project maintains a list of directories and files you probably do not need 
 
 ## Usage:
 
-    # download to `rsync-homedir-local.txt`
-    wget https://raw.githubusercontent.com/rubo77/rsync-homedir-excludes/master/rsync-homedir-excludes.txt -O rsync-homedir-local.txt
-    # or clone and copy to `rsync-homedir-local.txt`
-    git clone https://github.com/rubo77/rsync-homedir-excludes
-    cd rsync-homedir-excludes
-    cp rsync-homedir-excludes.txt rsync-homedir-local.txt
+Download the list to tmp:
 
-    # edit the file rsync-homedir-local.txt to your needs
-    nano rsync-homedir-local.txt
+    wget https://raw.githubusercontent.com/alefontani/rsync-homedir-excludes/master/rsync-homedir-excludes.txt -O /var/tmp/ignorelist
 
-    # define a Backup directory (with trailing slash!)
-    # some examples:
-    BACKUPDIR=/media/workspace/home/$USER/
-    BACKUPDIR=/media/$USER/linuxbackup/home/$USER/
-    BACKUPDIR=/media/$USER/USBSTICK/backup/home/$USER/
+Edit the file if you need:
 
-    # first specify the "-n" parameter so rsync will simulate its operation. You should use this before you start:
-    rsync -naP --exclude-from=rsync-homedir-local.txt /home/$USER/ $BACKUPDIR
+    nano /var/tmp/ignorelist
 
-    # check for permission denied errors in your homedir:
-    rsync -naP --exclude-from=rsync-homedir-local.txt /home/$USER/ $BACKUPDIR|grep denied
+Define a Backup directory with trailing slash (I've defined an external HD "Samsung T5" directory):
 
-    # if it is all fine, actually perform your backup:
-    rsync -aP --exclude-from=rsync-homedir-local.txt /home/$USER/ $BACKUPDIR
+    backupHomeFolder=/media/$USER/samsung_t5/linuxbackup/$(date -u +"%Y-%m-%d")/home/$USER/
 
-You can edit the exclude file before execution:
-- All lines starting with a `#` are ignored by rsync, i.e. those directories will be backed up.
-- The syntax doesn't support comments at the end of a line yet.
-- At the start there is a section with directories that are probably not worth backing up. Uncomment those lines to exclude them as well.
+create the Backup directory:
+
+    mkdir -p $backupHomeFolder
+
+rsync!
+
+    rsync -aP --exclude-from=/var/tmp/ignorelist /home/$USER/ $backupHomeFolder
+
+## Alias
+
+When commands are all tested you can make an alias function in you `.bashrc`:
+
+```sh
+function backup_t5() {
+    backupSupport="/media/$USER/samsung_t5"
+
+    if [ ! -d $backupSupport ]; then
+        return 1
+    fi
+
+    wget https://raw.githubusercontent.com/alefontani/rsync-homedir-excludes/master/rsync-homedir-excludes.txt -O /var/tmp/ignorelist
+
+    backupHomeFolder="$backupSupport/linuxbackup/$HOST-$(date -u +"%Y-%m-%d")/home/$USER/"
+    mkdir -p $backupHomeFolder
+    rsync -aP --exclude-from=/var/tmp/ignorelist /home/$USER/ $backupHomeFolder
+}
+```
