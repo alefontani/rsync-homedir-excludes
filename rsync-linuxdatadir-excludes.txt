@@ -23,7 +23,7 @@ VmQemu
 VirtualBoxVMs
 VmWareVMs
 sdk
-Argentina\ 2018
+Argentina 2018
 Incoming
 lost+found
 PlatformIO
